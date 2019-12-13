@@ -1,15 +1,12 @@
 #include <QCoreApplication>
-#include "dumessangerserver.h"
+#include "server.h"
 
-
-using namespace Chat;
-
-//#include <QApplication>
+using namespace ChatServer;
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    DuMessangerServer server;
+    Server server;
     if (!server.stratServer(5555))
     {
         qDebug()<<"Error: "
@@ -18,8 +15,6 @@ int main(int argc, char *argv[])
     }
 
     qDebug()<<"Server started...";
-
-//    MainWindow w;
-//    w.show();
+    
     return a.exec();
 }

@@ -2,7 +2,7 @@
 
 #include <QApplication>
 
-using namespace DurateCorporation;
+using namespace ChatClient;
 
 int main(int argc, char *argv[])
 {

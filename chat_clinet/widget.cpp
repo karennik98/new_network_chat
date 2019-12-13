@@ -1,10 +1,10 @@
 #include "widget.h"
 #include "ui_widget.h"
-#include "dumessangerconnectiondialog.h"
+#include "connectiondialog.h"
 #include <QTcpSocket>
 #include <QTextStream>
 
-namespace DurateCorporation {
+namespace ChatClient {
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -37,7 +37,7 @@ void Widget::on_send_clicked()
 
 void Widget::on_connect_clicked()
 {
-    DuMessangerConnectionDialog dialog(this);
+    ConnectionDialog dialog(this);
     if(dialog.exec() == QDialog::Rejected)
     {
         return;
@@ -45,4 +45,4 @@ void Widget::on_connect_clicked()
     mSocket->connectToHost(dialog.hostname(), dialog.port());
 }
 
-} // end namespace DurateCorporation
+} // end namespace ChatClient

@@ -9,7 +9,7 @@ QT_END_NAMESPACE
 
 class QTcpSocket;
 
-namespace  DurateCorporation {
+namespace ChatClient {
 
 class Widget : public QWidget
 {
@@ -29,5 +29,5 @@ private:
     QTcpSocket* mSocket;
 };
 
-} // end namespace DurateCorporation
+} // end namespace ChatClient
 #endif // WIDGET_H

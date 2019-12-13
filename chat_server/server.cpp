@@ -1,25 +1,26 @@
-#include "dumessangerserver.h"
-#include "dumessangersocket.h"
+#include "server.h"
+#include "socket.h"
 
 #include <QDebug>
 #include <QTextStream>
 
-namespace Chat{
-DuMessangerServer::DuMessangerServer(QObject* parent)
+namespace ChatServer {
+
+Server::Server(QObject* parent)
     : QTcpServer(parent)
 {
 
 }
 
-bool DuMessangerServer::stratServer(quint16 port)
+bool Server::stratServer(quint16 port)
 {
    return listen(QHostAddress::Any, port);
 }
 
-void DuMessangerServer::incomingConnection(qintptr handle)
+void Server::incomingConnection(qintptr handle)
 {
     qDebug()<<"Client connected with handle: "<<handle;
-    auto socket = new DuMessangerSocket(handle, this);
+    auto socket = new Socket(handle, this);
     m_Sockets<<socket;
 
     for(auto el : m_Sockets)
@@ -29,8 +30,8 @@ void DuMessangerServer::incomingConnection(qintptr handle)
         el->flush();
     }
 
-    connect(socket, &DuMessangerSocket::DuReadyRead, [&](DuMessangerSocket* sock) {
-        qDebug() << "DuReadyRead";
+    connect(socket, &Socket::ReadyRead, [&](Socket* sock) {
+        qDebug() << "ReadyRead";
         QTextStream stream(sock);
         auto text = stream.readAll();
 
@@ -42,8 +43,8 @@ void DuMessangerServer::incomingConnection(qintptr handle)
         }
     });
 
-    connect(socket, &DuMessangerSocket::DuStateChanged, [&](DuMessangerSocket* sock, int state) {
-        qDebug() << "DuStateChanged with handle:"
+    connect(socket, &Socket::StateChanged, [&](Socket* sock, int state) {
+        qDebug() << "StateChanged with handle:"
                  <<sock->socketDescriptor();
         if(state == QTcpSocket::UnconnectedState)
         {
@@ -62,4 +63,4 @@ void DuMessangerServer::incomingConnection(qintptr handle)
     });
 }
 
-} // end namespace Chat
+} // end namespace ChatServer
