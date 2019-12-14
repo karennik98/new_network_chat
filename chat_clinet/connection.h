@@ -15,8 +15,8 @@ public:
     {
 
     }
-    QString getHostname() const                   { return mHostname; }
-    quint16 getPort() const                       { return mPort;     }
+    QString getHostname() const                       { return mHostname; }
+    quint16 getPort() const                           { return mPort;     }
     /*const*/ QTcpSocket& getConnectionSocket() const { return *mSocket;  }
 
     void setHostname(QString hostname);

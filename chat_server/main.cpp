@@ -1,8 +1,6 @@
 #include <QCoreApplication>
 #include "server.h"
 
-using namespace ChatServer;
-
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);

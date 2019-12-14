@@ -1,8 +1,6 @@
 #include "connectiondialog.h"
 #include "ui_connectiondialog.h"
 
-namespace ChatClient {
-
 ConnectionDialog::ConnectionDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ConnectionDialog)
@@ -26,5 +24,3 @@ void ConnectionDialog::on_cancle_clicked()
 {
     reject();
 }
-
-} // end namspace ChatClient

@@ -1,14 +1,12 @@
-#include "widget.h"
+#include "chatwidget.h"
 
 #include <QApplication>
-
-using namespace ChatClient;
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     a.setStyle("fusion");
-    Widget w;
+    ChatWidget w;
     w.show();
     return a.exec();
 }

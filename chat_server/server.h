@@ -3,8 +3,6 @@
 
 #include <QTcpServer>
 #include <QList>
-
-namespace ChatServer {
     
 class Socket;
 
@@ -18,6 +16,5 @@ protected:
 private:
     QList<Socket* > m_Sockets;
 };
-} // end namespace ChatServer
 
 #endif // SERVER_H

@@ -7,8 +7,6 @@ namespace Ui {
 class ConnectionDialog;
 }
 
-namespace ChatClient {
-
 class ConnectionDialog : public QDialog
 {
     Q_OBJECT
@@ -38,7 +36,5 @@ inline quint16 ConnectionDialog::port() const
 {
     return mPort;
 }
-
-} // end namspace ChatClient
 
 #endif // CONNECTIONDIALOG_H

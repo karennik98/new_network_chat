@@ -1,7 +1,5 @@
 #include "socket.h"
 
-namespace ChatServer {
-
 Socket::Socket(qintptr handle, QObject* parent)
     : QTcpSocket(parent)
 {
@@ -14,5 +12,3 @@ Socket::Socket(qintptr handle, QObject* parent)
        emit StateChanged(this, el);
     });
 }
-
-} // namespace ChatServer

@@ -9,15 +9,13 @@ QT_END_NAMESPACE
 
 class QTcpSocket;
 
-namespace ChatClient {
-
-class Widget : public QWidget
+class ChatWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    Widget(QWidget *parent = nullptr);
-    ~Widget();
+    ChatWidget(QWidget *parent = nullptr);
+    ~ChatWidget();
 
 private slots:
     void on_send_clicked();
@@ -29,5 +27,4 @@ private:
     QTcpSocket* mSocket;
 };
 
-} // end namespace ChatClient
 #endif // WIDGET_H

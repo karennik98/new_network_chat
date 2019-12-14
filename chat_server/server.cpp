@@ -4,8 +4,6 @@
 #include <QDebug>
 #include <QTextStream>
 
-namespace ChatServer {
-
 Server::Server(QObject* parent)
     : QTcpServer(parent)
 {
@@ -62,5 +60,3 @@ void Server::incomingConnection(qintptr handle)
         }
     });
 }
-
-} // end namespace ChatServer
