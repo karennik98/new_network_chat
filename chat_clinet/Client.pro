@@ -28,7 +28,7 @@ FORMS += \
     connectiondialog.ui \
     widget.ui
 
-QMAKE_CXXFLAGS += -std=gnu++11
+#QMAKE_CXXFLAGS += -std=gnu++11
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
