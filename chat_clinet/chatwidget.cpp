@@ -1,33 +1,32 @@
-#include "widget.h"
+#include "chatwidget.h"
 #include "ui_widget.h"
 #include "connectiondialog.h"
 #include <QTcpSocket>
 #include <QTextStream>
 
-namespace ChatClient {
-
-Widget::Widget(QWidget *parent)
+ChatWidget::ChatWidget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    mSocket = new QTcpSocket(this);
+    //mSocket = new QTcpSocket(this);
+    mConnection = new Connection();
 
-    connect(mSocket, &QTcpSocket::readyRead, [&]()
+    connect(mConnection->getConnectionSocket(), &QTcpSocket::readyRead, [&]()
     {
-        QTextStream stream(mSocket);
+        QTextStream stream(mConnection->getConnectionSocket());
         auto text = stream.readAll();
         ui->textEdit->append(text);
     });
 }
 
-Widget::~Widget()
+ChatWidget::~ChatWidget()
 {
     delete ui;
 }
 
 
-void Widget::on_send_clicked()
+void ChatWidget::on_send_clicked()
 {
     QTextStream stream(mSocket);
     stream << ui->nikName->text() << ": " << ui->message->text();
@@ -35,7 +34,7 @@ void Widget::on_send_clicked()
     ui->message->clear();
 }
 
-void Widget::on_connect_clicked()
+void ChatWidget::on_connect_clicked()
 {
     ConnectionDialog dialog(this);
     if(dialog.exec() == QDialog::Rejected)
@@ -45,4 +44,3 @@ void Widget::on_connect_clicked()
     mSocket->connectToHost(dialog.hostname(), dialog.port());
 }
 
-} // end namespace ChatClient

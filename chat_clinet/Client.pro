@@ -16,13 +16,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    chatwidget.cpp \
+    connection.cpp \
     connectiondialog.cpp \
     main.cpp \
-    widget.cpp
+    user.cpp
 
 HEADERS += \
+    chatwidget.h \
+    connection.h \
     connectiondialog.h \
-    widget.h
+    user.h
 
 FORMS += \
     connectiondialog.ui \
